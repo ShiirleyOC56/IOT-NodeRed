@@ -3,7 +3,10 @@
 - Pablo Cesar Calcina Ccori
 
 ### Integrantes:
-- Jean CarlosSoncco Lupa
+- Jean Carlos Soncco Lupa
+- Shirley Michelle Oxa 
+- Junior Gomez Contreras
+- Thales Panibra Mamani
 
 ## 1. Requerimientos
 ### Docker

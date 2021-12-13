@@ -53,7 +53,7 @@ Data access
 curl -X GET "http://localhost:1880/get/topicLike/t*/payloadLike/*46*/last/2" -i
 ```
 
-![prueba 1](https://gitlab.com/jsonccolu/node-red-iot/blob/main/imagenes/img1.png)
+![prueba 1](https://github.com/ShiirleyOC56/IOT-NodeRed/blob/main/imagenes/img1.png)
 
 
 Data delete
@@ -61,5 +61,5 @@ Data delete
 curl -X GET "http://localhost:1880/delete/timestamp/id/14" -i 
 ```
 
-![prueba 2](https://gitlab.com/jsonccolu/node-red-iot/blob/main/imagenes/img4.png)
+![prueba 2](https://github.com/ShiirleyOC56/IOT-NodeRed/blob/main/imagenes/img4.png)
 

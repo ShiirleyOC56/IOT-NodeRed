@@ -1078,6 +1078,274 @@
         "wires": []
     },
     {
+        "id": "6e50ba6c811c7c32",
+        "type": "http in",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "url": "/rules/enable/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1520,
+        "wires": [
+            [
+                "cf0cfcb5d4784352"
+            ]
+        ]
+    },
+    {
+        "id": "8960f50ebe68f925",
+        "type": "http in",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "url": "/rules/disable/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 1560,
+        "wires": [
+            [
+                "d8640cd3aab3593e"
+            ]
+        ]
+    },
+    {
+        "id": "2a16c9270cd49a02",
+        "type": "http in",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "url": "/rules/enableAll",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1600,
+        "wires": [
+            [
+                "9f904b5d93e8a6b2"
+            ]
+        ]
+    },
+    {
+        "id": "a2e1315b6ce1849a",
+        "type": "http in",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "url": "/rules/disableAll",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 1640,
+        "wires": [
+            [
+                "7925b17840bce628"
+            ]
+        ]
+    },
+    {
+        "id": "cf0cfcb5d4784352",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "create query",
+        "func": "msg.action = \"enable\";\nmsg.topic = \"UPDATE ruleEngine\" +\n            \" SET active=1\" +\n            \" WHERE\" +\n            \" id=\" + msg.req.params.id + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1520,
+        "wires": [
+            [
+                "ea665ed54254b74b"
+            ]
+        ]
+    },
+    {
+        "id": "ea665ed54254b74b",
+        "type": "mysql",
+        "z": "33dad7de1f6b6a6a",
+        "mydb": "315d31040b2beac9",
+        "name": "",
+        "x": 560,
+        "y": 1580,
+        "wires": [
+            [
+                "c3d68a3743151797"
+            ]
+        ]
+    },
+    {
+        "id": "c3d68a3743151797",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "prepare response",
+        "func": "msg.payload = {\n    \"status\": msg.action + \" success\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1580,
+        "wires": [
+            [
+                "50b0bf40e49562d9"
+            ]
+        ]
+    },
+    {
+        "id": "50b0bf40e49562d9",
+        "type": "http response",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 930,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "d8640cd3aab3593e",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "create query",
+        "func": "msg.action = \"disable\";\nmsg.topic = \"UPDATE ruleEngine\" +\n            \" SET active=0\" +\n            \" WHERE\" +\n            \" id=\" + msg.req.params.id + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1560,
+        "wires": [
+            [
+                "ea665ed54254b74b"
+            ]
+        ]
+    },
+    {
+        "id": "9f904b5d93e8a6b2",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "create query",
+        "func": "msg.action = \"enable all\";\nmsg.topic = \"UPDATE ruleEngine SET active=1;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1600,
+        "wires": [
+            [
+                "ea665ed54254b74b"
+            ]
+        ]
+    },
+    {
+        "id": "7925b17840bce628",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "create query",
+        "func": "msg.action = \"disable all\";\nmsg.topic = \"UPDATE ruleEngine SET active=0;\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1640,
+        "wires": [
+            [
+                "ea665ed54254b74b"
+            ]
+        ]
+    },
+    {
+        "id": "fb4bad4f72e907c5",
+        "type": "http in",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "url": "/rules/add/:rulename",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 1720,
+        "wires": [
+            [
+                "0b23fa7cb1e89cea"
+            ]
+        ]
+    },
+    {
+        "id": "0b23fa7cb1e89cea",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "create query",
+        "func": "var ruleName = msg.req.params.rulename\n\nvar topicPattern = msg.req.body.topicPattern;\nvar payloadPattern = msg.req.body.payloadPattern;\nvar method = msg.req.body.method;\nvar webHook = msg.req.body.webHook;\n\nmsg.topic = \"INSERT INTO ruleEngine (ruleName, topicPAttern, payloadPattern, method, webHook)\" + \" VALUES\" +\n            \" ('\" + ruleName + \"', '\" + topicPattern + \"', '\" + payloadPattern + \"', '\" + method + \"', '\" + webHook + \"');\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1720,
+        "wires": [
+            [
+                "68df99876e7bcd4f"
+            ]
+        ]
+    },
+    {
+        "id": "68df99876e7bcd4f",
+        "type": "mysql",
+        "z": "33dad7de1f6b6a6a",
+        "mydb": "315d31040b2beac9",
+        "name": "",
+        "x": 560,
+        "y": 1720,
+        "wires": [
+            [
+                "91d8821c847130a0"
+            ]
+        ]
+    },
+    {
+        "id": "91d8821c847130a0",
+        "type": "function",
+        "z": "33dad7de1f6b6a6a",
+        "name": "prepare response",
+        "func": "if(msg.payload.affectedRows !== 0)\n{\n    msg.payload = {\n        \"status\": \"rule added\",\n        \"ruleName\": msg.req.params.rulename,\n        \"ruleId\": msg.payload.insertId\n    };\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1720,
+        "wires": [
+            [
+                "bd47fdd27289c46f"
+            ]
+        ]
+    },
+    {
+        "id": "bd47fdd27289c46f",
+        "type": "http response",
+        "z": "33dad7de1f6b6a6a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 1720,
+        "wires": []
+    },
+    {
         "id": "c5b954e98d6b5e59",
         "type": "mqtt-broker",
         "name": "",
@@ -1107,7 +1375,7 @@
         "id": "315d31040b2beac9",
         "type": "MySQLdatabase",
         "name": "",
-        "host": "172.17.0.1",
+        "host": "34.72.145.97",
         "port": "3306",
         "db": "tSeriesDB",
         "tz": "",

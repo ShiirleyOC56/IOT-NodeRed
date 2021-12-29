@@ -7,6 +7,7 @@
 - Shirley Michelle Oxa 
 - Junior Gomez Contreras
 - Thales Panibra Mamani
+- Alexander Cordova Ccana
 
 ## 1. Requerimientos
 ### Docker

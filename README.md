@@ -1,4 +1,7 @@
 # CURSO DE INTERNET DE LAS COSAS
+Para poder ver toda la información de node-red ir a la ip
+http://34.72.145.97:1880 y la base de datos en la 8080
+
 ### Docente:
 - Pablo Cesar Calcina Ccori
 
@@ -7,7 +10,7 @@
 - Shirley Michelle Oxa 
 - Junior Gomez Contreras
 - Thales Panibra Mamani
-- Alexander Cordova Ccana
+- Alexander Córdova Ccana
 
 ## 1. Requerimientos
 ### Docker
@@ -64,3 +67,12 @@ curl -X GET "http://localhost:1880/delete/timestamp/id/14" -i
 
 ![prueba 2](https://github.com/ShiirleyOC56/IOT-NodeRed/blob/main/imagenes/img4.png)
 
+## Test Cap 10 Rule Engine
+
+Activar y desactivar reglas especificas
+
+![prueba 3](https://github.com/ShiirleyOC56/IOT-NodeRed/blob/main/imagenes/rules.png)
+
+Crear nuevas reglas
+
+![prueba 4](https://github.com/ShiirleyOC56/IOT-NodeRed/blob/main/imagenes/rulescreate.png)
